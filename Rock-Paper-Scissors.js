@@ -30,7 +30,7 @@ const getWinner = (userChoice, computerChoice) => {
    switch (userChoice){
 
       case 'rock':
-         switch (computerChoice){
+         switch (computerChoice) {
             case 'rock':
                return 'Tie';
                break;
@@ -44,7 +44,7 @@ const getWinner = (userChoice, computerChoice) => {
          break;
 
          case 'paper':
-            switch (computerChoice){
+            switch (computerChoice) {
                case 'rock':
                   return 'User';
                   break;
@@ -58,7 +58,7 @@ const getWinner = (userChoice, computerChoice) => {
             break;
          
          case 'scissors':
-            switch (computerChoice){
+            switch (computerChoice) {
                case 'rock':
                   return 'Computer';
                   break;
@@ -75,12 +75,12 @@ const getWinner = (userChoice, computerChoice) => {
 }
 
 //prints a message declaring who has won the game
-const declareWinner = outcome => {
+const declareWinner = (userChoice, computerChoice, outcome) => {
    if (outcome === 'Tie'){
-      console.log('Game is a tie');
+      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -Game is a tie');
    } else if (outcome === 'User') {
-      console.log('User wins!');
+      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -User wins!');
    } else if (outcome === 'Computer'){
-      console.log('Computer wins - better luck next time!');
+      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -Computer wins... better luck next time!');
    }
 }
