@@ -1,14 +1,15 @@
 
 //event listners to trigger game play with given move on button click - this was a cargo cult from stack exchange and should be cleaned up
 document.getElementById('rock').addEventListener("click", function(){playGame('rock')});
-document.getElementById('paper').addEventListener("click", function(){playGame('rock')});
-document.getElementById('scissors').addEventListener("click",function(){playGame('rock')});
+document.getElementById('paper').addEventListener("click", function(){playGame('paper')});
+document.getElementById('scissors').addEventListener("click",function(){playGame('scissors')});
 
 //plays game with given move
 function playGame(userChoice) {
-   computerChoice = getComputerChoice();
-   outcome = getWinner(userChoice, computerChoice);
-   declareWinner(userChoice, computerChoice, outcome);
+   const computerChoice = getComputerChoice();
+   const outcome = getWinner(userChoice, computerChoice);
+   const message = getWinnerMessage(userChoice, computerChoice, outcome);
+   writeWinnerMessage(message);
 }
 
 //returns random choice of rock, paper or scissors by computer
@@ -73,12 +74,17 @@ const getWinner = (userChoice, computerChoice) => {
 }
 
 //prints a message declaring who has won the game
-const declareWinner = (userChoice, computerChoice, outcome) => {
+const getWinnerMessage = (userChoice, computerChoice, outcome) => {
+   var message;
    if (outcome === 'Tie'){
-      const message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -Game is a tie`;
+      message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -Game is a tie`;
    } else if (outcome === 'User') {
-      const message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -User wins!`;
+      message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -User wins!`;
    } else if (outcome === 'Computer'){
-      const message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -Computer wins... better luck next time!`;
+      message = `You chose ${userChoice} and Computer chose ${computerChoice} \n -Computer wins... better luck next time!`;
    }
+   return message;
 }
+
+//writes a message to page stating who has won
+const writeWinnerMessage = message => document.getElementById("output").innerHTML = `${message}`
