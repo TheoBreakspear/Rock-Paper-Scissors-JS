@@ -1,11 +1,14 @@
-//gets choice of rock, paper or scissors from user, prints error if input is invalid
-const getUserChoice = userInput => {
-   cleanInput = userInput.toLowerCase();
-   if (cleanInput === 'rock' || cleanInput === 'paper' || cleanInput ==='scissors') {
-      return cleanInput;
-   } else {
-      console.log('Invalid input - please chose one of rock, paper, or scissors' );
-   }
+
+//event listners to trigger game play with given move on button click
+document.getElementById('rock').addEventListener("click", function(){playGame('rock')})
+document.getElementById('paper').addEventListener("click", function(){playGame('rock')})
+document.getElementById('scissors').addEventListener("click",function(){playGame('rock')})
+
+//plays game with given move
+function playGame(userChoice) {
+   computerChoice = getComputerChoice();
+   outcome = getWinner(userChoice, computerChoice);
+   declareWinner(userChoice, computerChoice, outcome);
 }
 
 //returns random choice of rock, paper or scissors by computer
@@ -77,10 +80,10 @@ const getWinner = (userChoice, computerChoice) => {
 //prints a message declaring who has won the game
 const declareWinner = (userChoice, computerChoice, outcome) => {
    if (outcome === 'Tie'){
-      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -Game is a tie');
+      console.log(`You chose ${userChoice} and Computer chose ${computerChoice} \n -Game is a tie`);
    } else if (outcome === 'User') {
-      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -User wins!');
+      console.log(`You chose ${userChoice} and Computer chose ${computerChoice} \n -User wins!`);
    } else if (outcome === 'Computer'){
-      console.log('You chose ${userChoice} and Computer chose ${computerChoice} \n -Computer wins... better luck next time!');
+      console.log(`You chose ${userChoice} and Computer chose ${computerChoice} \n -Computer wins... better luck next time!`);
    }
 }
