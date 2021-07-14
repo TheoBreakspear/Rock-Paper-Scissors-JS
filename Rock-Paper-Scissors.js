@@ -73,3 +73,14 @@ const getWinner = (userChoice, computerChoice) => {
    }
    
 }
+
+//prints a message declaring who has won the game
+const declareWinner = outcome => {
+   if (outcome === 'Tie'){
+      console.log('Game is a tie');
+   } else if (outcome === 'User') {
+      console.log('User wins!');
+   } else if (outcome === 'Computer'){
+      console.log('Computer wins - better luck next time!');
+   }
+}
